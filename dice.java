@@ -1,23 +1,26 @@
-
-
 import java.util.Random;
 import java.util.Scanner;
+public class dice {
 
-public class dice
-{
-    private static Scanner input;
-
-	public static void main(String []args)
-    {
-        Random dice = new Random();
-        input = new Scanner(System.in);
-        int face;
-        int result;
-
-        
-        System.out.println("How many faces does the dice have?");
-        face = input.nextInt();
-        result = dice.nextInt(face) + 1;
-        System.out.println("\nThe dice rolled a " + result + ".");
+    int Size;
+    String[] selection={"One","Two","Three","Four","Five","Six"};
+    public dice(int Size){
+        this.Size=Size;
     }
+    public String rollDice(){
+        return selection[new Random().nextInt(Size)];      
+    }
+    public static void main(String[] args) {
+        System.out.print("Enter Size of Dice 2,4 and 6 :");
+        Scanner in=new Scanner(System.in);
+        int size=in.nextInt();
+        System.out.println();
+        if(size==2 || size==4 || size==6 ){
+            dice d=new dice(size);
+            System.out.println(d.rollDice());
+        }
+        else{
+            System.out.println("Invalid Input"); 
+        }  
+    } 
 }
